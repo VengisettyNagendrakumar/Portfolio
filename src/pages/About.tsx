@@ -50,7 +50,7 @@ const About = () => {
             
             <div className="rounded-xl overflow-hidden shadow-lg animate-fade-in animate-delay-200">
               <div className="aspect-[4/3] bg-accent/10 flex items-center justify-center">
-                <span className="text-lg text-muted-foreground"><img src="src/image/nagendrakumar.jpg" alt="nagendra" /></span>
+                <span className="text-lg text-muted-foreground"><img src="./public/nagendrakumar.jpg" alt="nagendra" /></span>
               </div>
             </div>
           </div>
