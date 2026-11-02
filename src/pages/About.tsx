@@ -5,7 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import EducationCard from "@/components/EducationCard";
 import ExperienceCard from "@/components/ExperienceCard";
 import SkillsList from "@/components/SkillsList";
-import { personalInfo, educationData, experienceData, skillsData, certificatesData } from "@/data/portfolio";
+import { personalInfo, educationData, experienceData, skillsData, certificatesData, resumeUrl } from "@/data/portfolio";
 
 const About = () => {
   return (
@@ -39,9 +39,9 @@ const About = () => {
               
               <div className="pt-4">
                 <Button asChild variant="outline">
-                  <a href="/Nagendrakumar-Resume.pdf" download>
+                  <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                     <FileText className="mr-2 h-4 w-4" />
-                    Download Resume
+                    View Resume
                   </a>
                 </Button>
               </div>

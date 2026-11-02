@@ -9,6 +9,8 @@ export const personalInfo = {
   bio: "AI/ML Developer with hands-on experience building production-grade AI systems including real-time multi-model proctoring pipelines, LLM-based evaluation systems, NLP extraction pipelines, and recommendation engines using computer vision, transformer embeddings, vector search, and speech/entity recognition. Skilled in end-to-end delivery across Python, FastAPI, Celery, and REST API development, with a track record of measurably improving accuracy, efficiency, and scalability across systems deployed to 100,000+ users."
 };
 
+export const resumeUrl = "https://drive.google.com/file/d/1p2m1eedSBH_2X-NVFNHYtDPzHhOb_qi-/view?usp=sharing";
+
 export const educationData: Education[] = [
   {
     institution: "Godavari Institute of Engineering and Technology",

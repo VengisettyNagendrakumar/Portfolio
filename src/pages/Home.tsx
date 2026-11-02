@@ -6,7 +6,7 @@ import ExperienceCard from "@/components/ExperienceCard";
 import ProjectCard from "@/components/ProjectCard";
 import SkillsList from "@/components/SkillsList";
 import ContactForm from "@/components/ContactForm";
-import { certificatesData, educationData, experienceData, personalInfo, projectsData, skillsData, socialData } from "@/data/portfolio";
+import { certificatesData, educationData, experienceData, personalInfo, projectsData, resumeUrl, skillsData, socialData } from "@/data/portfolio";
 
 const Home = () => {
   const currentExperience = experienceData[0];
@@ -45,8 +45,8 @@ const Home = () => {
 
           <div className="hero-links">
             <Button asChild>
-              <a href="/Nagendrakumar-Resume.pdf" download>
-                <FileText className="mr-2 h-4 w-4" />Résumé
+              <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                <FileText className="mr-2 h-4 w-4" />View Résumé
               </a>
             </Button>
             {socialData.filter(({ platform }) => platform === "GitHub" || platform === "LinkedIn").map((social) => (
