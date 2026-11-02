@@ -10,7 +10,7 @@ interface SkillsListProps {
 
 const SkillsList = ({ skills, className }: SkillsListProps) => {
   return (
-    <div className={cn("space-y-8", className)}>
+    <div className={cn("grid gap-8", className)}>
       {skills.map((skill, index) => (
         <div key={index} className="space-y-3">
           <h3 className="text-lg font-medium">{skill.category}</h3>
