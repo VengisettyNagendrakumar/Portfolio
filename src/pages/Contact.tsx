@@ -17,7 +17,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8 animate-fade-in">
             <p className="text-lg">
-              I'm interested in freelance opportunities, especially ambitious or large projects. However, if you have other requests or questions, don't hesitate to use the contact form.
+              For opportunities or questions about my AI/ML and software projects, feel free to reach out using the contact form.
             </p>
             
             <div className="space-y-4">

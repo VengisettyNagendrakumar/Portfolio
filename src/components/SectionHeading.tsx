@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
+  icon?: ReactNode;
   align?: "left" | "center" | "right";
   className?: string;
   children?: ReactNode;
@@ -13,6 +14,7 @@ interface SectionHeadingProps {
 const SectionHeading = ({
   title,
   subtitle,
+  icon,
   align = "left",
   className,
   children,
@@ -27,6 +29,7 @@ const SectionHeading = ({
       )}
     >
       <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+        {icon && <span className="mr-2 inline-flex align-middle">{icon}</span>}
         {title}
         <span className="text-accent">.</span>
       </h2>

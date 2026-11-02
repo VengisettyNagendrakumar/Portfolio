@@ -1,4 +1,5 @@
 
+import type { CSSProperties } from "react";
 import { Education } from "@/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -6,9 +7,10 @@ import { cn } from "@/lib/utils";
 interface EducationCardProps {
   education: Education;
   className?: string;
+  style?: CSSProperties;
 }
 
-const EducationCard = ({ education, className }: EducationCardProps) => {
+const EducationCard = ({ education, className, style }: EducationCardProps) => {
   const { institution, degree, field, location, cgpa, percentage, period } = education;
 
   return (
@@ -17,6 +19,7 @@ const EducationCard = ({ education, className }: EducationCardProps) => {
         "overflow-hidden transition-all duration-300 border border-border/50 hover:border-accent/20 hover:shadow-md backdrop-blur-sm",
         className
       )}
+      style={style}
     >
       <CardHeader className="space-y-1 pb-2">
         <CardTitle className="text-xl font-semibold">{institution}</CardTitle>

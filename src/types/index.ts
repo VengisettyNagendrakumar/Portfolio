@@ -13,14 +13,20 @@ export interface Experience {
   role: string;
   company: string;
   period: string;
+  location?: string;
+  projects: ExperienceProject[];
+}
+
+export interface ExperienceProject {
+  title: string;
   description: string[];
-  technologies?: string[];
+  technologies: string[];
 }
 
 export interface Project {
   title: string;
   description: string;
-  period: string;
+  period?: string;
   technologies: string[];
   link?: string;
   points: string[];

@@ -1,4 +1,3 @@
-
 import { Education, Experience, Project, Skill, Certificate, Social } from '@/types';
 
 export const personalInfo = {
@@ -6,15 +5,15 @@ export const personalInfo = {
   email: "nagendravengisetti@gmail.com",
   phone: "+91 8520840010",
   location: "Hyderabad",
-  title: "Full Stack Developer",
-  bio: "Full Stack Developer with expertise in frontend, backend, and database management. Experienced in creating scalable and high-performance web applications using React.js, Django, and related technologies."
+  title: "AI/ML Developer",
+  bio: "AI/ML Developer with hands-on experience building production-grade AI systems including real-time multi-model proctoring pipelines, LLM-based evaluation systems, NLP extraction pipelines, and recommendation engines using computer vision, transformer embeddings, vector search, and speech/entity recognition. Skilled in end-to-end delivery across Python, FastAPI, Celery, and REST API development, with a track record of measurably improving accuracy, efficiency, and scalability across systems deployed to 100,000+ users."
 };
 
 export const educationData: Education[] = [
   {
     institution: "Godavari Institute of Engineering and Technology",
     degree: "B.Tech",
-    field: "CSE(AIML)",
+    field: "CSE (AIML)",
     cgpa: "8.42",
     period: "2020 - 2024",
     location: "Rajahmundry"
@@ -30,74 +29,122 @@ export const educationData: Education[] = [
 
 export const experienceData: Experience[] = [
   {
-    role: "Full-Stack Intern",
-    company: "Techwing",
-    period: "Dec 2023 - Mar 2024",
-    description: [
-      "Utilized expertise in frontend, backend, and database management to create scalable and high-performance web applications.",
-      "Participated in daily stand-ups and contributed to project planning sessions."
-    ],
-    technologies: ["Python", "Django", "React.js"]
-  },
-  {
-    role: "AI/ML Intern",
-    company: "Edu Skills",
-    period: "Dec 2022 - Feb 2023",
-    description: [
-      "Leveled up AI development skills to advance career.",
-      "Learned fundamental algorithms and concepts in AI and machine learning."
-    ],
-    technologies: ["AI", "ML"]
+    role: "AI/ML Developer",
+    company: "Altrodav Technologies Pvt Ltd (MeetMux & PlaceMux)",
+    period: "Apr 2025 - Present",
+    location: "Bangalore, India",
+    projects: [
+      {
+        title: "PlaceMux — AI/ML Systems (Current Project)",
+        technologies: ["FastAPI", "Celery", "Redis", "PostgreSQL", "Python", "InsightFace", "YOLOv8", "Silero VAD", "Resemblyzer"],
+        description: [
+          "Built and hardened a real-time AI proctoring system for large-scale technical assessments, integrating multi-model inference (InsightFace for face recognition, YOLOv8 for object detection, Silero VAD and Resemblyzer for voice activity/speaker detection) across a FastAPI + Celery + Redis pipeline.",
+          "Resolved critical production issues including SSE race conditions, silent YOLO crashes, missing Celery queue registrations, and migrated inference models from CPU to GPU for improved throughput.",
+          "Engineered an AI coding evaluation system combining static analysis (Tree-sitter, Semgrep) with LLM-based evaluation (Qwen 2.5 7B), splitting Celery workers by workload type and setting scoring weights to prioritize runtime correctness (60/20/20), improving evaluation accuracy and system reliability to 93%.",
+          "Delivered a JD Skill Extractor pipeline (GLiNER, Aho-Corasick, Qwen2.5:7b fallback) for automated job description parsing, improving extraction accuracy from 72% to 87% through ratio-based LLM triggering, an expanded blacklist (~278 phrases), and a 216-trigger implication graph.",
+          "Developed a Domain Level Prediction system for technical interview questions, fixing model and dataset issues (524 duplicate entries, sparse difficulty bands) and generating synthetic data for underrepresented bands, achieving 94.2% domain accuracy and Cohen's Kappa of 0.94."
+        ]
+      },
+      {
+        title: "MeetMux — AI Developer (Social Platform)",
+        technologies: ["Python", "FastAPI", "Transformer Embeddings", "Amazon Nova Sonic", "BERT NER", "Vector Search"],
+        description: [
+          "Designed an AI-powered chat reply recommendation system that generates context-aware responses, improving reply relevance and conversational accuracy by 35–40%.",
+          "Implemented semantic similarity using Transformer-based embeddings and vector search to retrieve top replies from 100K+ chat pairs, achieving 90%+ semantic match accuracy.",
+          "Architected a multi-layer recommendation pipeline combining personal history, friend-specific context, and global fallback, reducing cold-start failures by 30%.",
+          "Enhanced response quality by applying toxicity filtering, spam detection, and similarity-based deduplication, reducing unsafe or repetitive replies by 25%.",
+          "Created an AI-powered user onboarding assistant that enables users to complete their profiles through voice-based conversations, improving onboarding efficiency by 40%.",
+          "Integrated Amazon Nova Sonic for high-speed intent matching and BERT NER for accurate entity extraction (e.g., name, DOB, bio) from user responses, achieving 95% entity accuracy.",
+          "Automated the profile form-filling process by mapping extracted entities to application fields, eliminating 100% of manual entry steps and ensuring data consistency.",
+          "Improved user experience and retention by reducing onboarding drop-offs by 25% through a seamless conversational interface."
+        ]
+      }
+    ]
   }
 ];
 
 export const projectsData: Project[] = [
   {
     title: "Full Stack e-Commerce Application",
-    period: "June 2024 - Aug 2024",
-    description: "A responsive e-Commerce platform using React.js and Django",
-    technologies: ["React.js", "Django", "Django REST Framework", "RESTful APIs"],
-    link: "django-backend-mp34.onrender.com/#/",
+    description: "A responsive e-Commerce platform built with React.js and Django, supporting 100+ products and 50+ active users in its initial phase.",
+    technologies: ["React.js", "Django", "Django REST Framework", "React Bootstrap", "RESTful APIs"],
     points: [
-      "Engineered a responsive e-Commerce platform using React.js and Django, supporting 100+ products and 50+ active users in the initial phase.",
-      "Designed and implemented RESTful APIs using Django REST Framework (DRF), enabling seamless data flow between the frontend and backend with latency reduced by 15% and improving API response times by 20%.",
-      "Developed a responsive mobile interface using React Bootstrap, achieving seamless compatibility for over 100 product listings and ensuring optimal user engagement across both desktop and mobile platforms throughout initial launch phase.",
+      "Developed a responsive e-Commerce platform using React.js and Django, supporting 100+ products and 50+ active users in the initial phase.",
+      "Architected and implemented RESTful APIs using Django REST Framework (DRF), enabling seamless data flow between the frontend and backend with latency reduced by 15% and improving API response times by 20%.",
+      "Crafted a responsive mobile interface using React Bootstrap, achieving seamless compatibility for over 100 product listings and ensuring optimal user engagement across both desktop and mobile platforms throughout the initial launch phase.",
       "Optimized application scalability and maintainability by adhering to best practices, improving performance by 15%."
     ]
   },
   {
-    title: "Deep Learning Based Breast Cancer Classification System",
-    period: "Nov 2023 - Mar 2024",
-    description: "An innovative system for breast cancer classification",
-    technologies: ["Deep Learning", "Transfer Learning", "DenseNet121"],
+    title: "Employee Management System (React.js + Spring Boot)",
+    description: "A full-stack employee management system for managing 50+ employee records.",
+    technologies: ["React.js", "Spring Boot", "REST APIs"],
     points: [
-      "As a fourth-year project, participated in a team of four to develop an innovative system for breast cancer classification.",
-      "Incorporated transfer learning with a pre-trained DenseNet121 model for feature extraction.",
-      "Engineered a model to categorize breast cancer as benign, malignant, or normal, achieving an exceptional 98% accuracy."
+      "Built a full-stack employee management system using React.js and Spring Boot for managing 50+ employee records.",
+      "Added CRUD features to create, view, update, and delete records with real-time updates, reducing delay by 40%.",
+      "Connected frontend and backend using REST APIs, improving data transfer speed by 30%.",
+      "Designed a responsive interface with form checks and live table updates, reducing user input errors by 25%."
     ]
   },
   {
     title: "IMDB Clone: Movie Review and Streaming Platform",
-    period: "Sep 2023 - Oct 2023",
-    description: "An IMDB-inspired platform with Django",
-    technologies: ["Django", "Token-based Authentication", "Pagination", "Filtering"],
+    description: "An IMDB-inspired Django platform with a movie database and user-generated reviews.",
+    technologies: ["Django", "Token-based Authentication", "Throttling", "Pagination", "Filtering"],
     points: [
-      "Developed an IMDB-inspired platform with Django, supporting a movie database with 100+ titles and user-generated reviews.",
-      "Enhanced security with token-based authentication, reducing unauthorized access by 80%.",
+      "Created an IMDB-inspired platform with Django, supporting a movie database with 100+ titles and user-generated reviews.",
+      "Strengthened security with token-based authentication, reducing unauthorized access by 80%.",
       "Optimized performance by implementing throttling, pagination, and filtering, increasing page load speed by 50%.",
       "Restricted review editing permissions to review owners, ensuring 100% data integrity and user privacy."
+    ]
+  },
+  {
+    title: "Deep Learning Based Breast Cancer Classification System",
+    description: "A team project using transfer learning to classify breast cancer as benign, malignant, or normal.",
+    technologies: ["Deep Learning", "Transfer Learning", "DenseNet121"],
+    points: [
+      "As a fourth-year project, participated in a team of four to develop an innovative system for breast cancer classification.",
+      "Incorporated transfer learning with a pre-trained DenseNet121 model for feature extraction.",
+      "Trained a model to categorize breast cancer as benign, malignant, or normal, achieving 98% accuracy."
     ]
   }
 ];
 
 export const skillsData: Skill[] = [
   {
-    category: "Technical Skills",
-    items: ["HTML", "CSS", "React.js", "Python", "Django", "Django REST Framework", "Java", "Spring Boot", "MySQL"]
+    category: "Programming Languages",
+    items: ["Python", "Java"]
+  },
+  {
+    category: "AI/ML & Data Science",
+    items: ["Machine Learning", "Deep Learning", "Neural Networks", "Natural Language Processing (NLP)"]
+  },
+  {
+    category: "Generative AI",
+    items: ["LLMs", "RAG", "Prompt Engineering", "LangChain", "LangGraph", "MCP", "Vector Search", "vLLM", "Ollama"]
+  },
+  {
+    category: "AI/ML Frameworks & Tools",
+    items: ["LLM Evaluation"]
+  },
+  {
+    category: "Backend & APIs",
+    items: ["FastAPI", "Django", "Django REST Framework", "Spring Boot", "REST API Design"]
+  },
+  {
+    category: "Task Queues & Async Processing",
+    items: ["Celery", "Redis"]
+  },
+  {
+    category: "Databases",
+    items: ["PostgreSQL", "MySQL"]
   },
   {
     category: "Tools",
-    items: ["Postman", "MySQL Workbench", "Figma"]
+    items: ["Docker", "Git"]
+  },
+  {
+    category: "Frontend",
+    items: ["React.js", "HTML", "CSS"]
   }
 ];
 

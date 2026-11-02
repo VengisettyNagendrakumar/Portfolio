@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowDown, Github, Linkedin, FileText, Mail } from "lucide-react";
+import { ArrowRight, ArrowDown, Github, Linkedin, Code, FileText, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import SectionHeading from "@/components/SectionHeading";
@@ -39,7 +39,7 @@ const Home = () => {
               variant="outline" 
               className="animate-fade-in px-4 py-1 text-sm font-normal bg-secondary"
             >
-              Full Stack Developer
+              {personalInfo.title}
             </Badge>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight md:leading-none animate-fade-in">
@@ -59,8 +59,14 @@ const Home = () => {
               </Button>
               
               <Button asChild variant="outline" size="lg">
-                <a href="mailto:nagendravengisetty@gmail.com">
+                <a href={`mailto:${personalInfo.email}`}>
                   Contact Me <Mail className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+
+              <Button asChild variant="outline" size="lg">
+                <a href="/Nagendrakumar-Resume.pdf" download>
+                  Download Resume <FileText className="ml-2 h-4 w-4" />
                 </a>
               </Button>
             </div>
@@ -85,12 +91,13 @@ const Home = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a 
-                href="#" 
+                href="https://leetcode.com/u/nagendravengisetti"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-accent transition-colors"
-                aria-label="Resume"
+                aria-label="LeetCode"
               >
+                <Code className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -136,7 +143,7 @@ const Home = () => {
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading 
             title="Work Experience"
-            subtitle="My professional journey and internships."
+            subtitle="Current AI/ML development work across MeetMux and PlaceMux."
           />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

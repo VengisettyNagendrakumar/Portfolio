@@ -20,8 +20,7 @@ const About = () => {
               </h1>
               
               <p className="text-lg text-muted-foreground">
-                Full Stack Developer with expertise in frontend, backend, and database management. 
-                I specialize in creating scalable and high-performance web applications using modern technologies.
+                {personalInfo.bio}
               </p>
               
               <div className="space-y-3 pt-4">
@@ -40,7 +39,7 @@ const About = () => {
               
               <div className="pt-4">
                 <Button asChild variant="outline">
-                  <a href="https://drive.google.com/file/d/1NCwD2KrvJFT579Uxp8mWIBqOGylMGmVj/view" target="_blank" rel="noopener noreferrer">
+                  <a href="/Nagendrakumar-Resume.pdf" download>
                     <FileText className="mr-2 h-4 w-4" />
                     Download Resume
                   </a>
@@ -50,7 +49,7 @@ const About = () => {
             
             <div className="rounded-xl overflow-hidden shadow-lg animate-fade-in animate-delay-200">
               <div className="aspect-[4/3] bg-accent/10 flex items-center justify-center">
-                <span className="text-lg text-muted-foreground"><img src="/nagendrakumar.jpg" alt="nagendra" /></span>
+                <span className="text-lg text-muted-foreground"><img src="/nagendrakumar.jpg" alt={personalInfo.name} /></span>
               </div>
             </div>
           </div>

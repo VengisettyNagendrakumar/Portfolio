@@ -1,4 +1,5 @@
 
+import type { CSSProperties } from "react";
 import { Project } from "@/types";
 import { ArrowUpRight } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,9 +10,10 @@ interface ProjectCardProps {
   project: Project;
   index: number;
   className?: string;
+  style?: CSSProperties;
 }
 
-const ProjectCard = ({ project, index, className }: ProjectCardProps) => {
+const ProjectCard = ({ project, className, style }: ProjectCardProps) => {
   const { title, description, period, technologies, link, points } = project;
 
   return (
@@ -20,12 +22,13 @@ const ProjectCard = ({ project, index, className }: ProjectCardProps) => {
         "overflow-hidden group transition-all duration-300 h-full border border-border/50 hover:border-accent/20 hover:shadow-lg backdrop-blur-sm",
         className
       )}
+      style={style}
     >
       <CardHeader className="space-y-1 pb-4">
         <div className="flex justify-between items-start">
           <div>
             <CardTitle className="text-2xl font-semibold">{title}</CardTitle>
-            <CardDescription className="text-sm mt-1">{period}</CardDescription>
+            {period && <CardDescription className="text-sm mt-1">{period}</CardDescription>}
           </div>
           {link && (
             <a 
