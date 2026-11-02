@@ -22,6 +22,7 @@ export default {
 			fontFamily: {
 				sans: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
 				mono: ['SF Mono', 'monospace'],
+				serif: ['Roboto Slab', 'Georgia', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

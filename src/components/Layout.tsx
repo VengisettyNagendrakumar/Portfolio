@@ -1,12 +1,12 @@
 
 import { useState, useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { Menu, X, Github, Linkedin, Code, Mail } from "lucide-react";
+import { Github, Linkedin, Code, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { personalInfo } from "@/data/portfolio";
 
 const Layout = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -18,16 +18,19 @@ const Layout = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when changing routes
   useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location.pathname]);
+    if (!location.hash) return;
+
+    const section = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    section?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [location.hash, location.pathname]);
 
   const navigationLinks = [
-    { name: "Home", path: "/" },
-    { name: "Projects", path: "/projects" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: "ABOUT", path: "/#about" },
+    { name: "EXPERIENCE", path: "/#experience" },
+    { name: "SKILLS", path: "/#skills" },
+    { name: "PROJECTS", path: "/#projects" },
+    { name: "CONTACT", path: "/#contact" },
   ];
 
   const socialLinks = [
@@ -56,137 +59,67 @@ const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header 
+      <header
         className={cn(
-          "fixed top-0 w-full backdrop-blur-lg z-50 transition-all duration-300",
-          isScrolled ? "bg-white/80 shadow-sm" : "bg-transparent"
+          "portfolio-header sticky top-0 z-50 transition-all duration-300",
+          isScrolled && "portfolio-header-scrolled"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+        <div className="portfolio-nav-container">
+          <div className="flex items-center justify-between gap-5 py-3">
             <Link 
               to="/" 
-              className="text-xl font-semibold tracking-tight transition-colors hover:text-accent"
+              className="portfolio-brand"
             >
-              Nagendra<span className="text-accent">.</span>
+              NV<span>.</span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-6">
+            <nav aria-label="Primary" className="portfolio-nav">
               {navigationLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-accent relative py-2 px-1",
-                    location.pathname === link.path
-                      ? "text-accent"
-                      : "text-foreground/80"
-                  )}
-                >
-                  {link.name}
-                  {location.pathname === link.path && (
-                    <span className="absolute bottom-0 left-0 h-0.5 w-full bg-accent" />
-                  )}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Social Links */}
-            <div className="hidden md:flex items-center space-x-4">
-              {socialLinks.map((link) => (
                 <a
                   key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-accent transition-colors duration-200"
-                  aria-label={link.name}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 rounded-md text-muted-foreground hover:text-accent transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-16 bg-white/95 backdrop-blur-lg z-40 animate-fade-in">
-            <nav className="flex flex-col items-center p-8 space-y-6 text-lg">
-              {navigationLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className={cn(
-                    "font-medium transition-colors hover:text-accent",
-                    location.pathname === link.path
-                      ? "text-accent"
-                      : "text-foreground/80"
-                  )}
+                  href={`#${link.path.split("#")[1]}`}
+                  className="portfolio-nav-link"
+                  onClick={() => {
+                    document.getElementById(link.path.split("#")[1])?.scrollIntoView({
+                      behavior: "instant",
+                      block: "start",
+                    });
+                  }}
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
-              
-              <div className="flex items-center space-x-6 mt-8 pt-8 border-t w-full justify-center">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-accent transition-colors"
-                    aria-label={link.name}
-                  >
-                    {link.icon}
-                  </a>
-                ))}
-              </div>
             </nav>
+
           </div>
-        )}
+        </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow pt-16">
+      <main className="flex-grow">
         <Outlet />
       </main>
 
       {/* Footer */}
-      <footer className="mt-auto py-8 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © {new Date().getFullYear()} Nagendrakumar Vengisetty. All rights reserved.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                  aria-label={link.name}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
+      <footer className="portfolio-footer">
+        <div className="portfolio-container flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            // © {new Date().getFullYear()} {personalInfo.name}
+          </p>
+          <div className="flex items-center gap-4">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target={link.url.startsWith("mailto:") ? undefined : "_blank"}
+                rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                className="portfolio-social-link"
+                aria-label={link.name}
+              >
+                {link.icon}
+              </a>
+            ))}
           </div>
         </div>
       </footer>

@@ -1,186 +1,145 @@
-
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, ArrowDown, Github, Linkedin, Code, FileText, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Github, Linkedin, Mail, ArrowUpRight, FileText } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import SectionHeading from "@/components/SectionHeading";
-import ProjectCard from "@/components/ProjectCard";
+import { Button } from "@/components/ui/button";
+import EducationCard from "@/components/EducationCard";
 import ExperienceCard from "@/components/ExperienceCard";
-import { personalInfo } from "@/data/portfolio";
-import { projectsData } from "@/data/portfolio";
-import { experienceData } from "@/data/portfolio";
-import { cn } from "@/lib/utils";
+import ProjectCard from "@/components/ProjectCard";
+import SkillsList from "@/components/SkillsList";
+import ContactForm from "@/components/ContactForm";
+import { certificatesData, educationData, experienceData, personalInfo, projectsData, skillsData, socialData } from "@/data/portfolio";
 
 const Home = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  const featuredProjects = projectsData.slice(0, 2);
-  const featuredExperiences = experienceData.slice(0, 2);
+  const currentExperience = experienceData[0];
 
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="min-h-[90vh] flex flex-col justify-center relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.05),transparent)]"></div>
-        <div 
-          className={cn(
-            "container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24",
-            isLoaded ? "opacity-100" : "opacity-0",
-            "transition-opacity duration-1000"
-          )}
-        >
-          <div className="flex flex-col items-start gap-4 md:gap-6">
-            <Badge 
-              variant="outline" 
-              className="animate-fade-in px-4 py-1 text-sm font-normal bg-secondary"
-            >
-              {personalInfo.title}
-            </Badge>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight md:leading-none animate-fade-in">
-              Hi, I'm {personalInfo.name.split(' ')[0]}
-              <span className="text-accent">.</span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl animate-fade-in animate-delay-100">
-              {personalInfo.bio}
-            </p>
-            
-            <div className="flex flex-wrap gap-4 mt-4 animate-fade-in animate-delay-200">
-              <Button asChild size="lg">
-                <Link to="/projects">
-                  View Projects <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              
-              <Button asChild variant="outline" size="lg">
-                <a href={`mailto:${personalInfo.email}`}>
-                  Contact Me <Mail className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
+    <div className="portfolio-page">
+      <section id="about">
+        <div className="portfolio-container hero-section">
+          <p className="terminal-prompt"><span aria-hidden="true">&gt;</span> ./init_profile.sh --force</p>
+          <p className="section-label">AI · SOFTWARE · MACHINE LEARNING</p>
+          <h1 className="hero-name">{personalInfo.name}</h1>
+          <p className="hero-title">{personalInfo.title}</p>
+          <p className="hero-summary">
+            Building production AI across computer vision, NLP, LLM evaluation, and recommendation systems serving 100,000+ users.
+          </p>
 
-              <Button asChild variant="outline" size="lg">
-                <a href="/Nagendrakumar-Resume.pdf" download>
-                  Download Resume <FileText className="ml-2 h-4 w-4" />
+          <div className="current-role-panel">
+            <p className="role-line">
+              <span className="role-label">CURRENT ROLE</span>
+              <span>{currentExperience.role} @ {currentExperience.company}</span>
+            </p>
+            <ul className="role-highlights">
+              {[
+                "Built real-time AI proctoring with face, object, and voice detection using FastAPI, Celery, and Redis.",
+                "Raised coding-evaluation reliability to 93% and job-skill extraction accuracy from 72% to 87%.",
+              ].map((highlight) => (
+                <li key={highlight}><span aria-hidden="true">&raquo;</span>{highlight}</li>
+              ))}
+            </ul>
+          </div>
+
+          <details className="professional-summary">
+            <summary>PROFESSIONAL_SUMMARY</summary>
+            <p>{personalInfo.bio}</p>
+          </details>
+
+          <div className="hero-links">
+            <Button asChild>
+              <a href="/Nagendrakumar-Resume.pdf" download>
+                <FileText className="mr-2 h-4 w-4" />Résumé
+              </a>
+            </Button>
+            {socialData.filter(({ platform }) => platform === "GitHub" || platform === "LinkedIn").map((social) => (
+              <Button key={social.platform} asChild variant="outline">
+                <a href={social.url} target="_blank" rel="noopener noreferrer">
+                  {social.platform === "GitHub" ? <Github className="mr-2 h-4 w-4" /> : <Linkedin className="mr-2 h-4 w-4" />}
+                  {social.platform}<ArrowUpRight className="ml-2 h-3 w-3" />
                 </a>
               </Button>
-            </div>
-            
-            <div className="flex gap-4 mt-4 animate-fade-in animate-delay-300">
-              <a 
-                href="https://github.com/VengisettyNagendrakumar" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-accent transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/nagendra-kumar-vengisetty-253079253/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-accent transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://leetcode.com/u/nagendravengisetti"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-accent transition-colors"
-                aria-label="LeetCode"
-              >
-                <Code className="h-5 w-5" />
-              </a>
+            ))}
+            <Button asChild variant="outline">
+              <a href={`mailto:${personalInfo.email}`}><Mail className="mr-2 h-4 w-4" />Email</a>
+            </Button>
+          </div>
+
+          <div className="education-section">
+            <p className="section-kicker">// EDUCATION_LOG</p>
+            <div className="grid gap-4 md:grid-cols-2">
+              {educationData.map((education) => (
+                <EducationCard key={education.institution} education={education} />
+              ))}
             </div>
           </div>
         </div>
-        
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="h-6 w-6 text-muted-foreground" />
+      </section>
+
+      <section id="experience" className="portfolio-section">
+        <div className="portfolio-container">
+          <p className="section-kicker">// EXPERIENCE_LOG</p>
+          <h2 className="portfolio-heading">Professional Experience</h2>
+          <p className="section-intro">Production AI systems and full-stack development at MeetMux and PlaceMux.</p>
+          {experienceData.map((experience) => (
+            <ExperienceCard
+              key={`${experience.company}-${experience.role}`}
+              experience={experience}
+              className="experience-panel"
+            />
+          ))}
         </div>
       </section>
 
-      {/* Selected Projects Section */}
-      <section className="py-20 bg-secondary/50">
-        <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading 
-            title="Selected Projects"
-            subtitle="Here are some of my recent projects that showcase my skills and experience."
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard 
-                key={index}
+      <section id="skills" className="portfolio-section">
+        <div className="portfolio-container">
+          <p className="section-kicker">// TOOLKIT</p>
+          <h2 className="portfolio-heading">Skills</h2>
+          <SkillsList skills={skillsData} className="skills-grid" />
+          <div className="certification-list">
+            <h3 className="section-kicker">// CERTIFICATIONS</h3>
+            <div className="flex flex-wrap gap-2">
+              {certificatesData.map(({ name, issuer }) => (
+                <Badge key={name} variant="outline" className="certificate-badge">{name} <span className="ml-1 opacity-70">/ {issuer}</span></Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" className="portfolio-section">
+        <div className="portfolio-container">
+          <p className="section-kicker">// PROJECTS</p>
+          <h2 className="portfolio-heading">Selected Work</h2>
+          <p className="section-intro">A selection of AI, machine learning, and full-stack projects.</p>
+          <div className="grid gap-5 md:grid-cols-2">
+            {projectsData.map((project, index) => (
+              <ProjectCard
+                key={project.title}
                 project={project}
                 index={index}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="project-panel"
               />
             ))}
-          </div>
-          
-          <div className="flex justify-center mt-12">
-            <Button asChild variant="outline" size="lg">
-              <Link to="/projects">
-                View All Projects <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section className="py-20">
-        <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading 
-            title="Work Experience"
-            subtitle="Current AI/ML development work across MeetMux and PlaceMux."
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredExperiences.map((experience, index) => (
-              <ExperienceCard 
-                key={index}
-                experience={experience}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-              />
-            ))}
-          </div>
-          
-          <div className="flex justify-center mt-12">
-            <Button asChild variant="outline" size="lg">
-              <Link to="/about">
-                More About Me <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-accent/5">
-        <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
-            Let's Work Together
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            I'm always open to new opportunities and collaborations. Feel free to reach out if you'd like to work together.
+      <section id="contact" className="portfolio-section contact-section">
+        <div className="portfolio-container">
+          <p className="section-kicker">// CONTACT_CHANNEL</p>
+          <h2 className="portfolio-heading">Let&apos;s connect.</h2>
+          <p className="section-intro">
+            For opportunities or questions about my AI/ML and software projects, reach out by email.
           </p>
-          <Button asChild size="lg">
-            <Link to="/contact">
-              Get in Touch <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          <a className="contact-email" href={`mailto:${personalInfo.email}`}>
+            {personalInfo.email}<ArrowUpRight className="h-4 w-4" />
+          </a>
+          <div className="contact-meta">
+            <span>{personalInfo.phone}</span>
+            <span>{personalInfo.location}</span>
+          </div>
+          <div className="contact-form-panel">
+            <p className="section-kicker">// INITIATE_TRANSMISSION</p>
+            <ContactForm />
+          </div>
         </div>
       </section>
     </div>

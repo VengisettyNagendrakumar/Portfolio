@@ -47,11 +47,6 @@ const About = () => {
               </div>
             </div>
             
-            <div className="rounded-xl overflow-hidden shadow-lg animate-fade-in animate-delay-200">
-              <div className="aspect-[4/3] bg-accent/10 flex items-center justify-center">
-                <span className="text-lg text-muted-foreground"><img src="/nagendrakumar.jpg" alt={personalInfo.name} /></span>
-              </div>
-            </div>
           </div>
         </div>
       </section>

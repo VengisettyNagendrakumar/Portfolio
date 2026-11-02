@@ -41,26 +41,31 @@ const ExperienceCard = ({ experience, className, style }: ExperienceCardProps) =
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        {projects.map((project) => (
-          <section key={project.title} className="space-y-3">
-            <h3 className="font-medium">{project.title}</h3>
-            <ul className="space-y-2">
-              {project.description.map((item, idx) => (
-                <li key={idx} className="text-sm pl-4 relative before:absolute before:top-2 before:left-0 before:h-1 before:w-1 before:rounded-full before:bg-accent/80">
-                  {item}
-                </li>
-              ))}
-            </ul>
-            {project.technologies.length > 0 && (
-              <div className="flex flex-wrap gap-1 pt-2">
-                {project.technologies.map((tech) => (
-                  <Badge key={tech} variant="secondary" className="font-normal">
-                    {tech}
-                  </Badge>
+        {projects.map((project, index) => (
+          <details key={project.title} className="experience-project" open={index === 0}>
+            <summary className="experience-project-summary">
+              <span>{project.title}</span>
+              <span className="experience-project-toggle" aria-hidden="true">+</span>
+            </summary>
+            <div className="space-y-4 pt-4">
+              <ul className="space-y-3">
+                {project.description.map((item) => (
+                  <li key={item} className="experience-bullet">
+                    <span aria-hidden="true">&raquo;</span>{item}
+                  </li>
                 ))}
-              </div>
-            )}
-          </section>
+              </ul>
+              {project.technologies.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <Badge key={tech} variant="outline" className="technology-badge">
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+            </div>
+          </details>
         ))}
       </CardContent>
     </Card>

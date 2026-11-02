@@ -5,33 +5,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 4%;
+    --background: 0 0% 3%;
+    --foreground: 40 14% 91%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 4%;
+    --card: 0 0% 6%;
+    --card-foreground: 40 14% 91%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 4%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 40 14% 91%;
 
-    --primary: 240 6% 10%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 40 14% 91%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 40 14% 91%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 40 7% 66%;
 
-    --accent: 210 100% 50%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 42 39% 69%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 240 6% 70%;
+    --border: 0 0% 19%;
+    --input: 0 0% 19%;
+    --ring: 42 39% 69%;
 
     --radius: 0.5rem;
 
@@ -51,11 +51,17 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
     @apply bg-background text-foreground antialiased overflow-x-hidden;
+    font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
     font-feature-settings: "ss01", "ss02";
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-foreground;
   }
 
   @keyframes marquee {
@@ -99,5 +105,245 @@
 
   .animate-delay-500 {
     animation-delay: 500ms;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  .portfolio-page {
+    @apply bg-background text-foreground;
+  }
+
+  .portfolio-container {
+    @apply mx-auto w-full max-w-5xl px-6 sm:px-8;
+  }
+
+  .portfolio-header {
+    @apply border-b border-border bg-background/95 backdrop-blur;
+  }
+
+  .portfolio-header-scrolled {
+    @apply shadow-lg shadow-black/20;
+  }
+
+  .portfolio-nav-container {
+    @apply mx-auto max-w-6xl px-4 sm:px-8;
+  }
+
+  .portfolio-brand {
+    @apply shrink-0 text-lg font-bold tracking-tight text-foreground;
+  }
+
+  .portfolio-brand span {
+    @apply text-accent;
+  }
+
+  .portfolio-nav {
+    @apply flex min-w-0 items-center gap-2 overflow-x-auto sm:gap-8;
+    scrollbar-width: none;
+  }
+
+  .portfolio-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-nav-link {
+    @apply whitespace-nowrap py-3 text-[9px] font-semibold tracking-[0.1em] text-muted-foreground transition-colors hover:text-accent sm:text-xs sm:tracking-[0.16em];
+  }
+
+  .portfolio-social-link {
+    @apply text-muted-foreground transition-colors hover:text-accent;
+  }
+
+  .portfolio-social-link svg {
+    @apply h-4 w-4;
+  }
+
+  .portfolio-footer {
+    @apply border-t border-border py-6 text-xs text-muted-foreground;
+  }
+
+  .hero-section {
+    @apply py-20 md:py-28;
+  }
+
+  .terminal-prompt,
+  .section-label,
+  .section-kicker {
+    @apply font-mono text-xs font-medium tracking-[0.18em] text-accent;
+  }
+
+  .terminal-prompt {
+    @apply mb-10 flex items-center gap-3 text-muted-foreground;
+  }
+
+  .terminal-prompt span {
+    @apply text-accent;
+  }
+
+  .section-label {
+    @apply mb-4 text-[10px];
+  }
+
+  .hero-name {
+    @apply max-w-4xl font-serif text-3xl font-black uppercase leading-[1.08] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl;
+  }
+
+  .hero-title {
+    @apply mt-5 font-serif text-xl font-bold text-foreground sm:text-2xl;
+  }
+
+  .hero-summary {
+    @apply mt-6 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8;
+  }
+
+  .current-role-panel {
+    @apply mt-8 max-w-4xl border border-border bg-card/80 p-5 sm:p-7;
+  }
+
+  .role-line {
+    @apply flex flex-wrap items-center gap-3 text-sm text-foreground;
+  }
+
+  .role-label {
+    @apply bg-foreground px-3 py-1 text-[10px] font-bold tracking-wider text-background;
+  }
+
+  .role-highlights {
+    @apply mt-5 space-y-3 text-sm leading-6 text-muted-foreground;
+  }
+
+  .professional-summary {
+    @apply mt-5 max-w-4xl text-xs text-muted-foreground;
+  }
+
+  .professional-summary summary {
+    @apply w-fit cursor-pointer tracking-wider text-accent;
+  }
+
+  .professional-summary p {
+    @apply mt-3 text-sm leading-7;
+  }
+
+  .role-highlights li,
+  .experience-bullet {
+    @apply flex gap-3;
+  }
+
+  .role-highlights li span,
+  .experience-bullet > span {
+    @apply shrink-0 text-accent;
+  }
+
+  .hero-links {
+    @apply mt-7 flex flex-wrap gap-3;
+  }
+
+  .hero-links a {
+    @apply font-mono text-xs;
+  }
+
+  .education-section {
+    @apply mt-16 border-t border-border pt-8;
+  }
+
+  .section-kicker {
+    @apply mb-4;
+  }
+
+  .portfolio-section {
+    @apply border-t border-border py-16 md:py-20;
+  }
+
+  .portfolio-heading {
+    @apply font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl;
+  }
+
+  .section-intro {
+    @apply mt-3 max-w-3xl text-sm leading-7 text-muted-foreground;
+  }
+
+  .experience-panel,
+  .project-panel {
+    @apply mt-8 border-border bg-card shadow-none;
+  }
+
+  .project-panel {
+    @apply mt-0;
+  }
+
+  .experience-project {
+    @apply border-t border-border py-4;
+  }
+
+  .experience-project-summary {
+    @apply flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-foreground;
+  }
+
+  .experience-project-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .experience-project-toggle {
+    @apply text-xl font-normal text-accent;
+  }
+
+  .experience-project[open] .experience-project-toggle {
+    @apply rotate-45;
+  }
+
+  .experience-bullet {
+    @apply text-sm leading-7 text-muted-foreground;
+  }
+
+  .technology-badge,
+  .certificate-badge {
+    @apply border-border font-mono text-[10px] font-normal text-muted-foreground;
+  }
+
+  .skills-grid {
+    @apply mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2;
+  }
+
+  .skills-grid h3 {
+    @apply font-serif text-base font-semibold text-foreground;
+  }
+
+  .skills-grid > div > div {
+    @apply gap-2;
+  }
+
+  .skills-grid [data-slot="badge"] {
+    @apply border-border font-mono text-[10px] text-muted-foreground;
+  }
+
+  .certification-list {
+    @apply mt-12 border-t border-border pt-8;
+  }
+
+  .contact-section {
+    @apply pb-24;
+  }
+
+  .contact-email {
+    @apply mt-7 inline-flex items-center gap-2 border-b border-accent pb-2 text-base text-foreground transition-colors hover:text-accent sm:text-lg;
+  }
+
+  .contact-meta {
+    @apply mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground;
+  }
+
+  .contact-form-panel {
+    @apply mt-10 max-w-3xl border border-border bg-card p-5 sm:p-8;
+  }
+
+  .contact-form-panel label {
+    @apply font-mono text-xs text-muted-foreground;
+  }
+
+  .contact-form-panel input,
+  .contact-form-panel textarea {
+    @apply rounded-none border-border bg-background font-mono text-sm text-foreground placeholder:text-muted-foreground/60;
   }
 }
