@@ -32,12 +32,12 @@ export const educationData: Education[] = [
 export const experienceData: Experience[] = [
   {
     role: "AI/ML Developer",
-    company: "Altrodav Technologies Pvt Ltd (MeetMux & PlaceMux)",
+    company: "Altrodav Technologies Pvt Ltd",
     period: "Apr 2025 - Present",
     location: "Bangalore, India",
     projects: [
       {
-        title: "PlaceMux — AI/ML Systems (Current Project)",
+        title: "AI Proctoring & Evaluation Systems",
         technologies: ["FastAPI", "Celery", "Redis", "PostgreSQL", "Python", "InsightFace", "YOLOv8", "Silero VAD", "Resemblyzer"],
         description: [
           "Built and hardened a real-time AI proctoring system for large-scale technical assessments, integrating multi-model inference (InsightFace for face recognition, YOLOv8 for object detection, Silero VAD and Resemblyzer for voice activity/speaker detection) across a FastAPI + Celery + Redis pipeline.",
@@ -48,7 +48,7 @@ export const experienceData: Experience[] = [
         ]
       },
       {
-        title: "MeetMux — AI Developer (Social Platform)",
+        title: "AI Recommendation & Onboarding Systems",
         technologies: ["Python", "FastAPI", "Transformer Embeddings", "Amazon Nova Sonic", "BERT NER", "Vector Search"],
         description: [
           "Designed an AI-powered chat reply recommendation system that generates context-aware responses, improving reply relevance and conversational accuracy by 35–40%.",

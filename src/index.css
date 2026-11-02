@@ -210,28 +210,14 @@
     @apply bg-foreground px-3 py-1 text-[10px] font-bold tracking-wider text-background;
   }
 
-  .role-highlights {
-    @apply mt-5 space-y-3 text-sm leading-6 text-muted-foreground;
+  .role-summary {
+    @apply mt-5 max-w-4xl text-sm leading-7 text-muted-foreground sm:text-base sm:leading-8;
   }
 
-  .professional-summary {
-    @apply mt-5 max-w-4xl text-xs text-muted-foreground;
-  }
-
-  .professional-summary summary {
-    @apply w-fit cursor-pointer tracking-wider text-accent;
-  }
-
-  .professional-summary p {
-    @apply mt-3 text-sm leading-7;
-  }
-
-  .role-highlights li,
   .experience-bullet {
     @apply flex gap-3;
   }
 
-  .role-highlights li span,
   .experience-bullet > span {
     @apply shrink-0 text-accent;
   }

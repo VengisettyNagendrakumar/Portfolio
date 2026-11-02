@@ -28,20 +28,10 @@ const Home = () => {
               <span className="role-label">CURRENT ROLE</span>
               <span>{currentExperience.role} @ {currentExperience.company}</span>
             </p>
-            <ul className="role-highlights">
-              {[
-                "Built real-time AI proctoring with face, object, and voice detection using FastAPI, Celery, and Redis.",
-                "Raised coding-evaluation reliability to 93% and job-skill extraction accuracy from 72% to 87%.",
-              ].map((highlight) => (
-                <li key={highlight}><span aria-hidden="true">&raquo;</span>{highlight}</li>
-              ))}
-            </ul>
+            <p className="role-summary">
+              AI/ML Developer building production-grade systems across real-time proctoring, LLM-powered coding evaluation, NLP skill extraction, and intelligent recommendation platforms. Experienced in Python, FastAPI, Celery, computer vision, transformer embeddings, and vector search, with measurable improvements in system reliability and model accuracy across products serving more than 100,000 users.
+            </p>
           </div>
-
-          <details className="professional-summary">
-            <summary>PROFESSIONAL_SUMMARY</summary>
-            <p>{personalInfo.bio}</p>
-          </details>
 
           <div className="hero-links">
             <Button asChild>
@@ -77,7 +67,7 @@ const Home = () => {
         <div className="portfolio-container">
           <p className="section-kicker">// EXPERIENCE_LOG</p>
           <h2 className="portfolio-heading">Professional Experience</h2>
-          <p className="section-intro">Production AI systems and full-stack development at MeetMux and PlaceMux.</p>
+          <p className="section-intro">Production AI systems and full-stack development across assessment and social-platform products.</p>
           {experienceData.map((experience) => (
             <ExperienceCard
               key={`${experience.company}-${experience.role}`}
